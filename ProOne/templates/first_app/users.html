@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Django Level Two Project</title>
+	<link rel="stylesheet" href="{% static "css/mystyle.css" %}"/>
+</head>
+<body>
+	<h2>Here are your users</h2>
+	<div class="djangotwoProject">
+		{% if user_records %}
+			<table>
+				<thead>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>E-mail</th>
+				</thead>
+				{% for user in user_records %}
+				<tr>
+					<td>{{ user.fName }}</td>
+					<td>{{ user.lName }}</td>
+					<td>{{ user.email }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		{% else %}
+			<p>No users</p>
+		{% endif %}
+	</div>
+
+</body>
+</html>

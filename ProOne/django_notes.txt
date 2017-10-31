@@ -1,0 +1,37 @@
+1. ‘django-admin startproject <project_name>’
+2. cd <project>
+3. Python manage.py startapp <project_name>
+4. Create universal folders
+	templates
+	static
+5. Add directories (for Django to scan) to settings.py
+6. urls.py takes care of routing
+7. views.py takes care of returning views
+
+
+# DB setup
+8. 'python manage.py migrate' (make sure app is in settings.py under INSTALLED_APPS list)
+9. 'python manage.py makemigrations <app_name>
+10. 'python manage.py migrate'
+
+
+# Check
+python manage.py shell
+print(Topic.objects.all())
+t = Topic(top_name="Social Network")
+t.save()
+
+'python manage.py createsuperuser'
+
+Create data with Faker
+pip install Faker --user
+
+
+Django Framework
+Model, Template, Views
+
+HTML Template files
+{% load static %}
+
+
+
