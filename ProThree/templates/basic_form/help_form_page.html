@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Help Page</title>
+</head>
+<body>
+	<h1>Here to help</h1>
+	<div class="container">
+		<form method="POST">
+			{{form.as_p}}
+			{% csrf_token %}
+			<input type="submit" class="btn btn-primary" value="Submit"/>
+		</form>
+	</div>
+</body>
+</html>
