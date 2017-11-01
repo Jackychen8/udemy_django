@@ -1,0 +1,125 @@
+Going through the Django tutorial on Udemy
+Here are some notes to help you out
+
+###################### Understanding the Django Work Flow ##########################
+
+
+#0 Set up VM #####################################################################
+1. Download Conda (sets up virtual envs and manages packages for different languages)
+2. conda create --name <myDjangoEnv> django
+3. source activate <myDjangoEnv>
+4. source deactivate
+
+
+
+#1 Create Project ################################################################
+1. django-admin startproject <project_name>
+2. cd <project>
+3. Create universal folders in parent directory
+	a. templates (html)
+	b. static (js, css, images)
+6. Add these folders/directories (for Django to scan) to settings.py
+    a. TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
+    b. and to TEMPLATES list dict key 'DIRS'
+7. urls.py takes care of routing (probably to apps)
+	a. may want to create an app with a view for landing page
+	b. can redirect to urls.py file of apps with include(*.urls)
+
+
+#2 Create Apps inside Project ####################################################
+1. python manage.py startapp <app_name>
+    a. add to INSTALLED_APPS list in settings.py
+2. views.py allows you to do stuff (grab/verify/process data) and specify what to return
+	a. def users(request):
+	b. return render(request, 'index.html', context=user_dict)
+	c. url.py -> this -> templates/.../*.html
+3. Configure html
+    a. create base html files in templates dir and customize with templating
+       i. {{}} for static content
+       ii. {% %} for things like loops and other logic
+
+
+
+#3 Create Models (in App) ########################################################
+1. Create class in models.py
+    a. class User(models.Model):
+    b. define __str__(self) for the class (should be the key value)
+2. register it in admin.py
+    a. "admin.site.register(User)"
+3. Actually take the model and make it real
+	a. 'python manage.py migrate' (make sure app is in settings.py under INSTALLED_APPS list)
+	b. 'python manage.py makemigrations <app_name>
+	c. 'python manage.py migrate'
+3. Can create values by importing models
+    a. User.objects.get_or_create(email=fake_email)[0]
+4. Can grab the values from views.py
+	b. "User.objects.order_by('email')"
+
+
+
+#4 Using Built-In Admin Page (must have at least 1 model migrated) ################
+1. python manage.py createsuperuser
+2. go to the local page + '/admin'
+    a. sign in and look at data
+
+
+##################### Check stuff in shell #######################
+python manage.py shell
+print(Topic.objects.all())
+t = Topic(top_name="Social Network")
+t.save()
+
+
+####################### Notes ######################
+
+# relative templates
+1. <a href="{% url 'var_name_in_app_urls.py:view_name' %}">Other page</a>
+    a. 'admin:index' exists by default
+    b. 'index' exists by default
+
+# reusable templates
+Example Reusable HTML File
+	<links to JS, CSS>
+	<bunch of html like navbars>
+		<body>
+			{% block body_block %}
+			{% endblock %}
+		</body>
+	<footer html/>
+
+Example HTML File
+	<!DOCTYPE html>
+	{% extends "base.html" %}
+	{% block body_block %}
+	<unique html>
+	{%endblock}
+
+
+
+
+Create data with Faker
+pip install Faker --user
+
+
+Django Framework
+Model, Template, Views
+
+HTML Template files
+{% load static %}
+
+Model -> Forms
+Can accept some, all, or exclude some
+1. fields()
+2. __all__
+3. exclude=()
+
+
+
+
+
+
+
+
+#################### LEFT OFF AT Lecture 142 #####################
+####### Probably using Node over Django but learned a lot ########
+##################################################################
