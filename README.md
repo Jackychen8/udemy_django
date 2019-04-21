@@ -112,9 +112,7 @@ Can accept some, all, or exclude some
 3. exclude=()
 
 
-* Django Forms function as a "model" (validator) for form pages. In fact, they can even be used as modes, via forms.ModelForm
+Django Forms function as a "model" (validator) for form pages. In fact, they can even be used as modes, via forms.ModelForm
 
 
-#################### LEFT OFF AT Lecture 142 #####################
-####### Probably using Node over Django but learned a lot ########
-##################################################################
+* LEFT OFF AT Lecture 142. Probably using Node over Django but learned a lot
